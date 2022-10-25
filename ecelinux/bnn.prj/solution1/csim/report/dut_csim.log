@@ -1,0 +1,7 @@
+   Compiling ../../../../bnn_test.cpp in release mode
+   Compiling ../../../../layer.cpp in release mode
+   Compiling ../../../../bnn.cpp in release mode
+   Generating csim.exe
+Accuracy: 0.81
+digirec BNN         :      1 calls; 200.415 msecs total time
+INFO: [SIM 1] CSim done with 0 errors.
