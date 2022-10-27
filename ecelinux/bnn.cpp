@@ -21,7 +21,7 @@ void dut(
     hls::stream<bit32_t> &strm_out
 )
 {
-  bit input[MAX_FMAP];
+  bitpack input[MAX_FMAP_PACKED];
   bit32_t input_l;
   bit32_t output;
 
@@ -32,6 +32,7 @@ void dut(
        input[i*BUS_WIDTH+j] = input_l(j,j);
      }
   }
+  
   //call bnn
   output = bnn_xcel(input);
  
@@ -45,9 +46,9 @@ void dut(
 // @param[in] : input - the testing instance
 // @return : the predicted digit
 
-bit32_t bnn_xcel(bit input[MAX_FMAP]){
-  bit mem_conv1[MAX_FMAP];
-  bit mem_conv2[MAX_FMAP];
+bit32_t bnn_xcel(bitpack input[MAX_FMAP_PACKED]){
+  bitpack mem_conv1[MAX_FMAP_PACKED];
+  bitpack mem_conv2[MAX_FMAP_PACKED];
 
   /* First Conv Layer */
   pad(input, mem_conv1, 1, I_WIDTH1);
@@ -57,7 +58,7 @@ bit32_t bnn_xcel(bit input[MAX_FMAP]){
   /* Second Conv Layer */
   pad(mem_conv1, mem_conv2, N_CHANNEL1, I_WIDTH2);
   conv(mem_conv2, mem_conv1, threshold2, N_CHANNEL1, N_CHANNEL2, I_WIDTH2+PADDING, 1);
-  max_pool(mem_conv1, mem_conv2, N_CHANNEL2, I_WIDTH2);
+  max_pool(mem_conv1, mem_conv2, N_CHANNEL2, I_WIDTH2); 
 
   reshape(mem_conv2, mem_conv1);
 
@@ -68,7 +69,7 @@ bit32_t bnn_xcel(bit input[MAX_FMAP]){
   // find predicted digit 
   bit32_t max_id = 0;
   for(int i = 1; i < 10; i++)
-    if(mem_conv1[i])
+    if(mem_conv1[0][i])
       max_id = i;
   return max_id;
 }

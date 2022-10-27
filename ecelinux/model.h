@@ -8,11 +8,11 @@
 
 #include"layer.h"
 
-const bit w_conv1[MAX_W_CONV] = {
+const bit w_conv1[MAX_W_CONV_UN] = {
     #include"data/weight_0b"
 }; //binary weight
 
-const bit w_conv2[MAX_W_CONV] = {
+const bit w_conv2[MAX_W_CONV_UN] = {
     #include"data/weight_5b"
 }; //binary weight
 

@@ -1,0 +1,188 @@
+
+
+================================================================
+== Vivado HLS Report for 'reshape'
+================================================================
+* Date:           Thu Oct 20 15:43:18 2022
+
+* Version:        2019.2.1 (Build 2724168 on Thu Dec 05 05:19:09 MST 2019)
+* Project:        bnn.prj
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 6.508 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     1345|     1345| 13.450 us | 13.450 us |  1345|  1345|   none  |
+    +---------+---------+-----------+-----------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                 |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name    |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1         |     1344|     1344|        42|          -|          -|    32|    no    |
+        | + Loop 1.1      |       40|       40|        10|          -|          -|     4|    no    |
+        |  ++ Loop 1.1.1  |        8|        8|         2|          -|          -|     4|    no    |
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 2 
+4 --> 5 3 
+5 --> 4 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 6 [1/1] (1.76ns)   --->   "br label %.loopexit" [layer.cpp:130]   --->   Operation 6 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 1.82>
+ST_2 : Operation 7 [1/1] (0.00ns)   --->   "%c_0 = phi i6 [ 0, %0 ], [ %c, %.loopexit.loopexit ]"   --->   Operation 7 'phi' 'c_0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 8 [1/1] (0.00ns)   --->   "%zext_ln130 = zext i6 %c_0 to i9" [layer.cpp:130]   --->   Operation 8 'zext' 'zext_ln130' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 9 [1/1] (1.42ns)   --->   "%icmp_ln130 = icmp eq i6 %c_0, -32" [layer.cpp:130]   --->   Operation 9 'icmp' 'icmp_ln130' <Predicate = true> <Delay = 1.42> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.13> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 10 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 32, i64 32, i64 32)"   --->   Operation 10 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 11 [1/1] (1.82ns)   --->   "%c = add i6 %c_0, 1" [layer.cpp:130]   --->   Operation 11 'add' 'c' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 12 [1/1] (0.00ns)   --->   "br i1 %icmp_ln130, label %2, label %.preheader1.preheader" [layer.cpp:130]   --->   Operation 12 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 13 [1/1] (1.76ns)   --->   "br label %.preheader1" [layer.cpp:131]   --->   Operation 13 'br' <Predicate = (!icmp_ln130)> <Delay = 1.76>
+ST_2 : Operation 14 [1/1] (0.00ns)   --->   "ret void" [layer.cpp:139]   --->   Operation 14 'ret' <Predicate = (icmp_ln130)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 1.76>
+ST_3 : Operation 15 [1/1] (0.00ns)   --->   "%y_0 = phi i3 [ %y, %.preheader1.loopexit ], [ 0, %.preheader1.preheader ]"   --->   Operation 15 'phi' 'y_0' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 16 [1/1] (1.13ns)   --->   "%icmp_ln131 = icmp eq i3 %y_0, -4" [layer.cpp:131]   --->   Operation 16 'icmp' 'icmp_ln131' <Predicate = true> <Delay = 1.13> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.13> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 17 [1/1] (0.00ns)   --->   "%empty_8 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 17 'speclooptripcount' 'empty_8' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 18 [1/1] (1.65ns)   --->   "%y = add i3 %y_0, 1" [layer.cpp:131]   --->   Operation 18 'add' 'y' <Predicate = true> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 19 [1/1] (0.00ns)   --->   "br i1 %icmp_ln131, label %.loopexit.loopexit, label %.preheader.preheader" [layer.cpp:131]   --->   Operation 19 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 20 [1/1] (0.00ns)   --->   "%trunc_ln133 = trunc i3 %y_0 to i2" [layer.cpp:133]   --->   Operation 20 'trunc' 'trunc_ln133' <Predicate = (!icmp_ln131)> <Delay = 0.00>
+ST_3 : Operation 21 [1/1] (0.00ns)   --->   "%shl_ln = call i4 @_ssdm_op_BitConcatenate.i4.i2.i2(i2 %trunc_ln133, i2 0)" [layer.cpp:133]   --->   Operation 21 'bitconcatenate' 'shl_ln' <Predicate = (!icmp_ln131)> <Delay = 0.00>
+ST_3 : Operation 22 [1/1] (0.00ns)   --->   "%zext_ln133 = zext i4 %shl_ln to i9" [layer.cpp:133]   --->   Operation 22 'zext' 'zext_ln133' <Predicate = (!icmp_ln131)> <Delay = 0.00>
+ST_3 : Operation 23 [1/1] (1.76ns)   --->   "br label %.preheader" [layer.cpp:132]   --->   Operation 23 'br' <Predicate = (!icmp_ln131)> <Delay = 1.76>
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 24 'br' <Predicate = (icmp_ln131)> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 5.07>
+ST_4 : Operation 25 [1/1] (0.00ns)   --->   "%x_0 = phi i3 [ %x, %1 ], [ 0, %.preheader.preheader ]"   --->   Operation 25 'phi' 'x_0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 26 [1/1] (1.13ns)   --->   "%icmp_ln132 = icmp eq i3 %x_0, -4" [layer.cpp:132]   --->   Operation 26 'icmp' 'icmp_ln132' <Predicate = true> <Delay = 1.13> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.13> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 27 [1/1] (0.00ns)   --->   "%empty_9 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 27 'speclooptripcount' 'empty_9' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 28 [1/1] (1.65ns)   --->   "%x = add i3 %x_0, 1" [layer.cpp:132]   --->   Operation 28 'add' 'x' <Predicate = true> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 29 [1/1] (0.00ns)   --->   "br i1 %icmp_ln132, label %.preheader1.loopexit, label %1" [layer.cpp:132]   --->   Operation 29 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 30 [1/1] (0.00ns)   --->   "%zext_ln133_1 = zext i3 %x_0 to i4" [layer.cpp:133]   --->   Operation 30 'zext' 'zext_ln133_1' <Predicate = (!icmp_ln132)> <Delay = 0.00>
+ST_4 : Operation 31 [1/1] (1.73ns)   --->   "%add_ln133 = add i4 %zext_ln133_1, %shl_ln" [layer.cpp:133]   --->   Operation 31 'add' 'add_ln133' <Predicate = (!icmp_ln132)> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 32 [1/1] (0.00ns)   --->   "%shl_ln133_1 = call i9 @_ssdm_op_BitConcatenate.i9.i4.i5(i4 %add_ln133, i5 0)" [layer.cpp:133]   --->   Operation 32 'bitconcatenate' 'shl_ln133_1' <Predicate = (!icmp_ln132)> <Delay = 0.00>
+ST_4 : Operation 33 [1/1] (1.82ns)   --->   "%o_index = add i9 %zext_ln130, %shl_ln133_1" [layer.cpp:133]   --->   Operation 33 'add' 'o_index' <Predicate = (!icmp_ln132)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 34 [1/1] (0.00ns)   --->   "%trunc_ln134 = trunc i6 %c_0 to i5" [layer.cpp:134]   --->   Operation 34 'trunc' 'trunc_ln134' <Predicate = (!icmp_ln132)> <Delay = 0.00>
+ST_4 : Operation 35 [1/1] (0.00ns)   --->   "%tmp = call i9 @_ssdm_op_BitConcatenate.i9.i5.i1.i3(i5 %trunc_ln134, i1 false, i3 %x_0)" [layer.cpp:134]   --->   Operation 35 'bitconcatenate' 'tmp' <Predicate = (!icmp_ln132)> <Delay = 0.00>
+ST_4 : Operation 36 [1/1] (1.82ns)   --->   "%i_index = add i9 %zext_ln133, %tmp" [layer.cpp:134]   --->   Operation 36 'add' 'i_index' <Predicate = (!icmp_ln132)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 37 [1/1] (0.00ns)   --->   "%zext_ln135 = zext i9 %i_index to i64" [layer.cpp:135]   --->   Operation 37 'zext' 'zext_ln135' <Predicate = (!icmp_ln132)> <Delay = 0.00>
+ST_4 : Operation 38 [1/1] (0.00ns)   --->   "%input_addr = getelementptr [5184 x i1]* %input_r, i64 0, i64 %zext_ln135" [layer.cpp:135]   --->   Operation 38 'getelementptr' 'input_addr' <Predicate = (!icmp_ln132)> <Delay = 0.00>
+ST_4 : Operation 39 [2/2] (3.25ns)   --->   "%input_load = load i1* %input_addr, align 1" [layer.cpp:135]   --->   Operation 39 'load' 'input_load' <Predicate = (!icmp_ln132)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 1> <Depth = 5184> <RAM>
+ST_4 : Operation 40 [1/1] (0.00ns)   --->   "br label %.preheader1"   --->   Operation 40 'br' <Predicate = (icmp_ln132)> <Delay = 0.00>
+
+State 5 <SV = 4> <Delay = 6.50>
+ST_5 : Operation 41 [1/2] (3.25ns)   --->   "%input_load = load i1* %input_addr, align 1" [layer.cpp:135]   --->   Operation 41 'load' 'input_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 1> <Depth = 5184> <RAM>
+ST_5 : Operation 42 [1/1] (0.00ns)   --->   "%zext_ln135_1 = zext i9 %o_index to i64" [layer.cpp:135]   --->   Operation 42 'zext' 'zext_ln135_1' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 43 [1/1] (0.00ns)   --->   "%output_addr = getelementptr [5184 x i1]* %output_r, i64 0, i64 %zext_ln135_1" [layer.cpp:135]   --->   Operation 43 'getelementptr' 'output_addr' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 44 [1/1] (3.25ns)   --->   "store i1 %input_load, i1* %output_addr, align 1" [layer.cpp:135]   --->   Operation 44 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 1> <Depth = 5184> <RAM>
+ST_5 : Operation 45 [1/1] (0.00ns)   --->   "br label %.preheader" [layer.cpp:132]   --->   Operation 45 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('c') with incoming values : ('c', layer.cpp:130) [5]  (1.77 ns)
+
+ <State 2>: 1.83ns
+The critical path consists of the following:
+	'phi' operation ('c') with incoming values : ('c', layer.cpp:130) [5]  (0 ns)
+	'add' operation ('c', layer.cpp:130) [9]  (1.83 ns)
+
+ <State 3>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('x') with incoming values : ('x', layer.cpp:132) [25]  (1.77 ns)
+
+ <State 4>: 5.08ns
+The critical path consists of the following:
+	'phi' operation ('x') with incoming values : ('x', layer.cpp:132) [25]  (0 ns)
+	'add' operation ('i_index', layer.cpp:134) [37]  (1.82 ns)
+	'getelementptr' operation ('input_addr', layer.cpp:135) [39]  (0 ns)
+	'load' operation ('input_load', layer.cpp:135) on array 'input_r' [40]  (3.25 ns)
+
+ <State 5>: 6.51ns
+The critical path consists of the following:
+	'load' operation ('input_load', layer.cpp:135) on array 'input_r' [40]  (3.25 ns)
+	'store' operation ('store_ln135', layer.cpp:135) of variable 'input_load', layer.cpp:135 on array 'output_r' [43]  (3.25 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

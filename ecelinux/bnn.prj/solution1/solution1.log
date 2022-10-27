@@ -1,0 +1,108 @@
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2.1 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'layer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'bnn.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:58 ; elapsed = 00:01:09 . Memory (MB): peak = 1169.715 ; gain = 527.219 ; free physical = 665 ; free virtual = 22613
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:58 ; elapsed = 00:01:09 . Memory (MB): peak = 1169.715 ; gain = 527.219 ; free physical = 666 ; free virtual = 22614
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:01:01 ; elapsed = 00:01:13 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 623 ; free virtual = 22575
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'if_mac' into 'conv' (layer.cpp:74) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense.1' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'bnn_xcel' into 'dut' (bnn.cpp:36) automatically.
+WARNING: [SYNCHK 200-23] bnn.cpp:32: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:01:02 ; elapsed = 00:01:13 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 621 ; free virtual = 22575
+INFO: [XFORM 203-602] Inlining function 'if_mac' into 'conv' (layer.cpp:74) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense.1' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'dense.1' into 'bnn_xcel' (bnn.cpp:65) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (layer.cpp:73:49) to (layer.cpp:73:44) in function 'conv'... converting 8 basic blocks.
+INFO: [XFORM 203-602] Inlining function 'dense' into 'bnn_xcel' (bnn.cpp:66) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'conv' (layer.cpp:57)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:03 ; elapsed = 00:01:15 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 588 ; free virtual = 22544
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:135:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:33:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:40:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:104:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:117:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'input' (bnn.cpp:32:31)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:85:27)
+INFO: [HLS 200-472] Inferring partial write operation for 'mem_conv2' (layer.cpp:165:19)
+INFO: [HLS 200-472] Inferring partial write operation for 'mem_conv1' (layer.cpp:169:9)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:01:04 ; elapsed = 00:01:16 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 535 ; free virtual = 22492
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'dut' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'pad' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 76.32 seconds; current allocated memory: 227.506 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.22 seconds; current allocated memory: 227.795 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (9.634ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns).
+WARNING: [SCHED 204-21] The critical path in module 'conv' consists of the following:
+	'mul' operation of DSP[125] ('tmp32', layer.cpp:76) [124]  (3.36 ns)
+	'add' operation of DSP[125] ('i_index', layer.cpp:75) [125]  (3.02 ns)
+	'getelementptr' operation ('input_addr', layer.cpp:77) [133]  (0 ns)
+	'load' operation ('input_load', layer.cpp:77) on array 'input_r' [134]  (3.25 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.37 seconds; current allocated memory: 228.153 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 228.730 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'max_pool' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (11.3135ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns).
+WARNING: [SCHED 204-21] The critical path in module 'max_pool' consists of the following:
+	'mul' operation of DSP[88] ('tmp6', layer.cpp:99) [87]  (3.36 ns)
+	'add' operation of DSP[88] ('add_ln113', layer.cpp:113) [88]  (3.02 ns)
+	'add' operation ('i_index', layer.cpp:113) [89]  (1.68 ns)
+	'getelementptr' operation ('input_addr', layer.cpp:114) [91]  (0 ns)
+	'load' operation ('input_load', layer.cpp:114) on array 'input_r' [92]  (3.25 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.52 seconds; current allocated memory: 228.958 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.24 seconds; current allocated memory: 229.276 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'reshape' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.34 seconds; current allocated memory: 229.414 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 229.574 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bnn_xcel' 

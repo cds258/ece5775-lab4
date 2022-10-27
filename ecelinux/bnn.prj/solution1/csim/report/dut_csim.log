@@ -1,0 +1,12 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+make[1]: Entering directory '/home/sje57/lab4/ecelinux/bnn.prj/solution1/csim/build'
+   Compiling ../../../../bnn_test.cpp in release mode
+   Compiling ../../../../layer.cpp in release mode
+   Compiling ../../../../bnn.cpp in release mode
+   Generating csim.exe
+make[1]: Leaving directory '/home/sje57/lab4/ecelinux/bnn.prj/solution1/csim/build'
+Accuracy: 0.82
+digirec BNN         :      1 calls; 607.264 msecs total time
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

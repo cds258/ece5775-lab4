@@ -1,0 +1,226 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2.1 (64-bit)
+  **** SW Build 2729669 on Thu Dec  5 04:48:12 MST 2019
+  **** IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /opt/xilinx/Xilinx_Vivado_vitis_2019.2/Vivado/2019.2/scripts/vivado_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/opt/xilinx/Xilinx_Vivado_vitis_2019.2/Vivado/2019.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'sje57' on host 'en-ec-ecelinux-01.coecis.cornell.edu' (Linux_x86_64 version 3.10.0-1160.76.1.el7.x86_64) on Thu Oct 20 15:42:00 EDT 2022
+INFO: [HLS 200-10] On os "CentOS Linux release 7.9.2009 (Core)"
+INFO: [HLS 200-10] In directory '/home/sje57/lab4/ecelinux'
+Sourcing Tcl script 'run.tcl'
+INFO: [HLS 200-10] Creating and opening project '/home/sje57/lab4/ecelinux/bnn.prj'.
+INFO: [HLS 200-10] Adding design file 'bnn.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'bnn_test.cpp' to the project
+INFO: [HLS 200-10] Adding design file 'layer.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'data' to the project
+INFO: [HLS 200-10] Creating and opening solution '/home/sje57/lab4/ecelinux/bnn.prj/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+make[1]: Entering directory '/home/sje57/lab4/ecelinux/bnn.prj/solution1/csim/build'
+   Compiling ../../../../bnn_test.cpp in release mode
+   Compiling ../../../../layer.cpp in release mode
+   Compiling ../../../../bnn.cpp in release mode
+   Generating csim.exe
+make[1]: Leaving directory '/home/sje57/lab4/ecelinux/bnn.prj/solution1/csim/build'
+Accuracy: 0.82
+digirec BNN         :      1 calls; 607.264 msecs total time
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'layer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'bnn.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:58 ; elapsed = 00:01:09 . Memory (MB): peak = 1169.715 ; gain = 527.219 ; free physical = 665 ; free virtual = 22613
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:58 ; elapsed = 00:01:09 . Memory (MB): peak = 1169.715 ; gain = 527.219 ; free physical = 666 ; free virtual = 22614
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:01:01 ; elapsed = 00:01:13 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 623 ; free virtual = 22575
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'if_mac' into 'conv' (layer.cpp:74) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense.1' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'bnn_xcel' into 'dut' (bnn.cpp:36) automatically.
+WARNING: [SYNCHK 200-23] bnn.cpp:32: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:01:02 ; elapsed = 00:01:13 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 621 ; free virtual = 22575
+INFO: [XFORM 203-602] Inlining function 'if_mac' into 'conv' (layer.cpp:74) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense.1' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'std::sqrt' into 'dense' (layer.cpp:154) automatically.
+INFO: [XFORM 203-602] Inlining function 'dense.1' into 'bnn_xcel' (bnn.cpp:65) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (layer.cpp:73:49) to (layer.cpp:73:44) in function 'conv'... converting 8 basic blocks.
+INFO: [XFORM 203-602] Inlining function 'dense' into 'bnn_xcel' (bnn.cpp:66) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'conv' (layer.cpp:57)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:03 ; elapsed = 00:01:15 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 588 ; free virtual = 22544
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:135:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:33:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:40:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:104:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:117:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'input' (bnn.cpp:32:31)
+INFO: [HLS 200-472] Inferring partial write operation for 'output' (layer.cpp:85:27)
+INFO: [HLS 200-472] Inferring partial write operation for 'mem_conv2' (layer.cpp:165:19)
+INFO: [HLS 200-472] Inferring partial write operation for 'mem_conv1' (layer.cpp:169:9)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:01:04 ; elapsed = 00:01:16 . Memory (MB): peak = 1170.707 ; gain = 528.211 ; free physical = 535 ; free virtual = 22492
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'dut' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'pad' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 76.32 seconds; current allocated memory: 227.506 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.22 seconds; current allocated memory: 227.795 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (9.634ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns).
+WARNING: [SCHED 204-21] The critical path in module 'conv' consists of the following:
+	'mul' operation of DSP[125] ('tmp32', layer.cpp:76) [124]  (3.36 ns)
+	'add' operation of DSP[125] ('i_index', layer.cpp:75) [125]  (3.02 ns)
+	'getelementptr' operation ('input_addr', layer.cpp:77) [133]  (0 ns)
+	'load' operation ('input_load', layer.cpp:77) on array 'input_r' [134]  (3.25 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.37 seconds; current allocated memory: 228.153 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 228.730 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'max_pool' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-21] Estimated clock period (11.3135ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns).
+WARNING: [SCHED 204-21] The critical path in module 'max_pool' consists of the following:
+	'mul' operation of DSP[88] ('tmp6', layer.cpp:99) [87]  (3.36 ns)
+	'add' operation of DSP[88] ('add_ln113', layer.cpp:113) [88]  (3.02 ns)
+	'add' operation ('i_index', layer.cpp:113) [89]  (1.68 ns)
+	'getelementptr' operation ('input_addr', layer.cpp:114) [91]  (0 ns)
+	'load' operation ('input_load', layer.cpp:114) on array 'input_r' [92]  (3.25 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.52 seconds; current allocated memory: 228.958 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.24 seconds; current allocated memory: 229.276 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'reshape' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.34 seconds; current allocated memory: 229.414 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 229.574 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bnn_xcel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.35 seconds; current allocated memory: 230.043 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.78 seconds; current allocated memory: 230.830 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.81 seconds; current allocated memory: 231.163 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.3 seconds; current allocated memory: 231.375 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'pad' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_mac_muladd_6ns_8ns_5ns_13_1_1' to 'dut_mac_muladd_6nbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'dut_mac_muladd_9ns_5ns_5ns_13_1_1' to 'dut_mac_muladd_9ncud' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mac_muladd_6nbkb': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dut_mac_muladd_9ncud': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'pad'.
+INFO: [HLS 200-111]  Elapsed time: 0.57 seconds; current allocated memory: 231.961 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_mac_muladd_9ns_6ns_5ns_13_1_1' to 'dut_mac_muladd_9ndEe' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mac_muladd_9ncud': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dut_mac_muladd_9ndEe': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv'.
+INFO: [HLS 200-111]  Elapsed time: 0.45 seconds; current allocated memory: 233.800 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'max_pool' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_mac_muladd_8ns_4ns_4ns_11_1_1' to 'dut_mac_muladd_8neOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'dut_mac_muladd_6ns_9ns_4ns_13_1_1' to 'dut_mac_muladd_6nfYi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mac_muladd_6nfYi': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dut_mac_muladd_8neOg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'max_pool'.
+INFO: [HLS 200-111]  Elapsed time: 0.82 seconds; current allocated memory: 236.543 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'reshape' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'reshape'.
+INFO: [HLS 200-111]  Elapsed time: 0.47 seconds; current allocated memory: 238.169 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'bnn_xcel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'bnn_xcel_threshold1_V' to 'bnn_xcel_thresholg8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'bnn_xcel_threshold2_V' to 'bnn_xcel_thresholhbi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'dut_fadd_32ns_32ns_32_5_full_dsp_1' to 'dut_fadd_32ns_32nibs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'dut_fmul_32ns_32ns_32_4_max_dsp_1' to 'dut_fmul_32ns_32njbC' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'dut_sitofp_32ns_32_6_1' to 'dut_sitofp_32ns_3kbM' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'dut_fcmp_32ns_32ns_1_2_1' to 'dut_fcmp_32ns_32nlbW' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_fadd_32ns_32nibs': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dut_fcmp_32ns_32nlbW': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dut_fmul_32ns_32njbC': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dut_sitofp_32ns_3kbM': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'bnn_xcel'.
+INFO: [HLS 200-111]  Elapsed time: 0.63 seconds; current allocated memory: 240.439 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'dut/strm_in_V_V' to 'ap_fifo'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'dut/strm_out_V_V' to 'ap_fifo'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'dut' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dut'.
+INFO: [HLS 200-111]  Elapsed time: 1.29 seconds; current allocated memory: 243.392 MB.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 88.39 MHz
+INFO: [RTMG 210-279] Implementing memory 'conv_w_conv1_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'conv_w_conv2_rom' using auto ROMs.
+WARNING: [RTMG 210-274] Memory 'bnn_xcel_thresholg8j' is read-only, switch it to a ROM.
+INFO: [RTMG 210-279] Implementing memory 'bnn_xcel_thresholg8j_rom' using block ROMs.
+WARNING: [RTMG 210-274] Memory 'bnn_xcel_thresholhbi' is read-only, switch it to a ROM.
+INFO: [RTMG 210-279] Implementing memory 'bnn_xcel_thresholhbi_rom' using block ROMs.
+INFO: [RTMG 210-279] Implementing memory 'bnn_xcel_w_fc1_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'bnn_xcel_b_fc1_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'bnn_xcel_w_fc2_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'bnn_xcel_b_fc2_rom' using distributed ROMs.
+INFO: [RTMG 210-278] Implementing memory 'bnn_xcel_mem_conv1_ram (RAM)' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:01:16 ; elapsed = 00:01:39 . Memory (MB): peak = 1297.715 ; gain = 655.219 ; free physical = 468 ; free virtual = 22442
+INFO: [VHDL 208-304] Generating VHDL RTL for dut.
+INFO: [VLOG 209-307] Generating Verilog RTL for dut.
+INFO: [HLS 200-112] Total elapsed time: 99.05 seconds; peak allocated memory: 243.392 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Thu Oct 20 15:43:38 2022...

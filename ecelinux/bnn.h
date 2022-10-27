@@ -16,6 +16,7 @@ void dut (
 );
 
 // Top function for bnn accelerator
-bit32_t bnn_xcel(bit input[MAX_FMAP]);
+//bit32_t bnn_xcel(bit input[MAX_FMAP]);
+bit32_t bnn_xcel(bitpack input[MAX_FMAP]);
 
 #endif
